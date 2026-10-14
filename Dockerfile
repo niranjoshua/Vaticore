@@ -6,7 +6,7 @@
 #
 # Render passes a service's environment variables as build arguments, so
 # setting VATICORE_WITH_FOUNDATION=1 on a service builds it with the models.
-FROM python:3.11-slim-trixie
+FROM python:3.14-slim-trixie
 
 ARG VATICORE_WITH_FOUNDATION=0
 ARG TORCH_INDEX=https://download.pytorch.org/whl/cpu
