@@ -74,15 +74,27 @@ each site's own recent readings and says which to adopt:
   grid record: generator whenever the grid is off (grid sites), battery
   first, and battery first with the generator run hard. Each starts the
   generator whenever the battery would run out, so outages compare.
-- **The recommendation:** the rule with the fewest litres and no more outage
-  hours, with the litres and money saved, and the setting to change.
+- **Battery wear:** each rule's battery cycles a day, from the energy it
+  draws. Running hard cycles the battery more. When the site's record gives
+  the bank's replacement cost and cycle life (`battery.replacement_cost`,
+  `battery.cycle_life`), every cycle has a price: the review shows each
+  rule's wear cost, nets it off the saving, and recommends against running
+  hard where the wear costs more than the diesel. Without them it shows the
+  cycles and says wear is not priced.
+- **The recommendation:** the cheapest rule (diesel plus priced wear, or
+  just the litres when wear is not priced) with no more outage hours, with
+  the litres and money saved, and the setting to change. If, once wear is
+  priced, the site's current running is cheapest, it says to keep it.
 - **Findings from the readings:** hours at light load (under 40% of the
   rating), and hours run while the grid was on.
 
 It needs a week of data at least, load (and solar) readings for 80% of
 hours, and, at a grid site, the grid's on/off record. A replay reacts
 exactly when needed; a real controller or technician may be slower, so treat
-the saving as what the rule allows. `--out` writes the JSON for a report.
+the saving as what the rule allows. Wear is a throughput model: calendar
+ageing and depth of discharge are not modelled, and what the site did is
+counted from hourly charge readings, so cycling within the hour is missed.
+`--out` writes the JSON for a report.
 
 ## Which model plans
 

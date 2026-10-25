@@ -35,6 +35,8 @@ write down how the number was reached.
 | Most the inverter or battery can deliver, in kW | `15` | `battery.power_kw` |
 | The lowest charge the operator lets it reach, in kWh | `9` | `battery.min_soc_kwh` |
 | Chemistry | lead-acid, lithium (LFP) | `battery.chemistry` |
+| What replacing the battery bank would cost today, in the site's currency (a supplier quote, or the last invoice) | `4500000` | `battery.replacement_cost` |
+| Cycle life from the battery's datasheet, in full cycles at the depth this site uses it (lead-acid often a few hundred to about 1,500; lithium LFP often several thousand: use the datasheet, not these) | `1200` | `battery.cycle_life` |
 
 ## Generator
 
@@ -114,6 +116,8 @@ usable_kwh = 30.0
 power_kw = 15.0
 min_soc_kwh = 9.0
 chemistry = "lead-acid"
+replacement_cost = 4500000.0
+cycle_life = 1200
 
 [site.generator]
 rated_kw = 16.0

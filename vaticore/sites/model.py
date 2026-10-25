@@ -57,12 +57,36 @@ class Battery(_Strict):
     charge_efficiency: float = Field(default=0.95, gt=0, le=1)
     discharge_efficiency: float = Field(default=0.95, gt=0, le=1)
     chemistry: str | None = None
+    replacement_cost: float | None = Field(
+        default=None,
+        ge=0,
+        description="What replacing the battery bank costs, in the site's currency; with "
+        "cycle_life, prices battery wear in the efficiency review",
+    )
+    cycle_life: float | None = Field(
+        default=None,
+        gt=0,
+        description="Equivalent full cycles the bank lasts, from its datasheet at the depth "
+        "the site uses it; with replacement_cost, prices battery wear",
+    )
 
     @model_validator(mode="after")
     def _floor_below_capacity(self) -> Battery:
         if self.min_soc_kwh >= self.usable_kwh:
             raise ValueError("min_soc_kwh must be below usable_kwh")
         return self
+
+    @property
+    def wear_cost_per_kwh(self) -> float | None:
+        """What each kWh drawn from the battery costs in wear, or None if not priced.
+
+        Throughput model: the bank delivers cycle_life full cycles of usable_kwh
+        before it is replaced. Calendar ageing and depth of discharge are not
+        modelled.
+        """
+        if self.replacement_cost is None or self.cycle_life is None:
+            return None
+        return self.replacement_cost / (self.cycle_life * self.usable_kwh)
 
 
 class Generator(_Strict):
