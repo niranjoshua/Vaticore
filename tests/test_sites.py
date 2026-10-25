@@ -100,3 +100,15 @@ def test_plan_for_a_registered_tower(single_site: pd.DataFrame) -> None:
     assert plan.planned_grid_on[10] and not plan.planned_grid_on[2]
     with pytest.raises(ValueError, match="no history"):
         plan_for_site(site, history.iloc[0:0], soc_kwh=12.0)
+
+
+def test_battery_wear_is_priced_only_with_a_cost_and_a_cycle_life() -> None:
+    from vaticore.sites.model import Battery
+
+    plain = Battery(usable_kwh=20.0, power_kw=10.0)
+    assert plain.wear_cost_per_kwh is None
+    assert Battery(usable_kwh=20.0, power_kw=10.0, cycle_life=1500).wear_cost_per_kwh is None
+    priced = Battery(usable_kwh=20.0, power_kw=10.0, replacement_cost=3e6, cycle_life=1500)
+    assert priced.wear_cost_per_kwh == pytest.approx(100.0)
+    with pytest.raises(ValueError):
+        Battery(usable_kwh=20.0, power_kw=10.0, cycle_life=0)

@@ -145,3 +145,65 @@ def test_what_it_refuses_to_review(
 def test_a_window_shorter_than_a_week_is_refused() -> None:
     review = review_efficiency(_site(), _readings(), start=END - pd.Timedelta(days=3), end=END)
     assert review.problems and review.recommended is None
+
+
+# -- battery wear --------------------------------------------------------------
+
+BATTERY = {"usable_kwh": 20.0, "power_kw": 10.0, "min_soc_kwh": 2.0}
+CHEAP_WEAR = {**BATTERY, "replacement_cost": 3_000_000.0, "cycle_life": 1500.0}
+DEAR_WEAR = {**BATTERY, "replacement_cost": 60_000_000.0, "cycle_life": 400.0}
+
+
+def _off_grid(*, soc: bool = False) -> pd.DataFrame:
+    readings = _readings(grid=False, practice="always_on_deficit")
+    if soc:  # one gentle cycle a day, as a recorded state of charge
+        readings["battery_soc_pct"] = 50 + 30 * np.sin(np.arange(len(readings)) / 24 * 2 * np.pi)
+    return readings
+
+
+def test_running_hard_cycles_the_battery_more_and_says_wear_is_not_priced() -> None:
+    review = review_efficiency(_site(grid=None), _off_grid(), start=START, end=END)
+    hard, first = review.result(RUN_HARD), review.result(BATTERY_FIRST)
+    assert hard is not None and first is not None
+    assert hard.battery_cycles is not None and first.battery_cycles is not None
+    assert hard.battery_cycles > first.battery_cycles > 0
+    assert hard.wear_cost is None and review.wear_cost_per_kwh is None
+    assert review.recommended == RUN_HARD
+    assert any("not priced" in a for a in review.advice)
+    assert "cycles/day" in review.to_text()
+
+
+def test_priced_wear_is_netted_off_the_saving() -> None:
+    review = review_efficiency(
+        _site(grid=None, battery=CHEAP_WEAR), _off_grid(soc=True), start=START, end=END
+    )
+    assert review.wear_cost_per_kwh == pytest.approx(100.0)  # 3,000,000 / (1,500 x 20 kWh)
+    assert review.recommended == RUN_HARD
+    recorded = review.result(RECORDED)
+    assert recorded is not None and recorded.battery_cycles == pytest.approx(18, rel=0.1)
+    assert review.extra_wear_cost is not None and review.extra_wear_cost > 0
+    assert review.litres_saved is not None and review.money_saved is not None
+    diesel = review.litres_saved * review.price_per_l
+    assert review.money_saved == pytest.approx(diesel - review.extra_wear_cost)
+    assert "net NGN" in review.to_text()
+    json.dumps(review.to_dict())
+
+
+def test_dear_wear_rules_out_running_hard() -> None:
+    review = review_efficiency(
+        _site(grid=None, battery=DEAR_WEAR), _off_grid(), start=START, end=END
+    )
+    hard, first = review.result(RUN_HARD), review.result(BATTERY_FIRST)
+    assert hard is not None and first is not None and hard.fuel_l < first.fuel_l
+    assert review.recommended == BATTERY_FIRST
+    assert any("more than the diesel it saves" in a for a in review.advice)
+    assert not any("saves no diesel" in a for a in review.advice)
+
+
+def test_todays_running_is_kept_when_wear_makes_it_cheapest() -> None:
+    review = review_efficiency(
+        _site(grid=None, battery=DEAR_WEAR), _off_grid(soc=True), start=START, end=END
+    )
+    assert review.recommended == RECORDED and review.litres_saved == 0
+    assert any("keep it" in a for a in review.advice)
+    assert "already runs about as well" in review.to_text()
