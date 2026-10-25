@@ -54,6 +54,8 @@ notebooks, and each can be rerun from one command.
 | [3. Pretrained foundation models against Vaticore's planning model](foundation-models.md) | RQ1, RQ5 | Elia load and solar (Spain excluded: it is in the models' pretraining data) | Chronos-2, zero shot, no weather: 21% lower pinball than Elia's own load forecast and Vaticore's GBM over 453 days, calibrated range 80.3%; value 86.7% of possible against 85.2%; with two weeks of history it beat the GBM with three years |
 | [4. Diesel against how sites run today](diesel-practice.md) | RQ2 | ENTSO-E Spain demand and solar shaped into a mini-grid and two towers (one on a synthetic weak grid); design 2017, test 2018 | Off-grid tower: 19.6% less diesel than the best-run practice, 30.4% less than an evening timer; the run-hard setting alone 24.7%. Weak-grid tower: battery first 83.5% less than the generator whenever the grid is off. Mini-grid: 2.0% less diesel, outage hours 94 to 30 |
 
+How litres become CO2 on the website, with the factor and the arithmetic: [carbon.md](carbon.md). A conversion of note 4, not a study.
+
 ## Results are locked
 
 A published number cannot change without someone deciding it should:
