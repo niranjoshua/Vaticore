@@ -167,6 +167,7 @@ def main(argv: Sequence[str] | None = None) -> int:
                         days=args.days,
                         timezone=site.timezone,
                         longitude=site.longitude,
+                        latitude=site.latitude,
                         has_solar=site.solar is not None,
                         has_grid=site.grid is not None and not site.grid.reliable,
                         has_battery=site.battery.usable_kwh > 0,

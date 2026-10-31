@@ -23,6 +23,7 @@ import numpy as np
 import pandas as pd
 
 from vaticore.schemas import BATTERY_SOC_PCT, GENERATION_KW, GRID_AVAILABLE, LOAD_KW, TIMESTAMP
+from vaticore.sites.nigeria import check_grid_against_collapses, locate
 
 # Latest reading older than this before the plan starts: warn, then fail.
 STALE_WARN = pd.Timedelta(hours=3)
@@ -267,8 +268,13 @@ def site_health_report(
     has_solar: bool = True,
     has_grid: bool = False,
     has_battery: bool = True,
+    latitude: float | None = None,
 ) -> SiteHealthReport:
-    """Inspect a site's raw readings over the last `days` days."""
+    """Inspect a site's raw readings over the last `days` days.
+
+    With the site's latitude and longitude, a Nigerian grid site's record is
+    also checked against total national grid collapses (vaticore/sites/nigeria.py).
+    """
     start = end - pd.Timedelta(days=days)
     frame = raw[(raw[TIMESTAMP] >= start) & (raw[TIMESTAMP] < end)].sort_values(TIMESTAMP)
     stamps = pd.DatetimeIndex(frame[TIMESTAMP])
@@ -352,6 +358,23 @@ def site_health_report(
                 "the grid where it is unknown.",
             )
         )
+    if (
+        has_grid
+        and latitude is not None
+        and longitude is not None
+        and locate(latitude, longitude) is not None
+    ):
+        for missed in check_grid_against_collapses(frame, timezone=timezone):
+            findings.append(
+                HealthIssue(
+                    "grid_on_in_collapse",
+                    HealthStatus.WARN,
+                    f"On {missed.day:%d %b %Y} the national grid collapsed completely, but "
+                    f"this site's record shows the grid on at all {missed.readings} readings "
+                    "that day: check that the grid on/off signal reads the grid itself, not "
+                    "the inverter's output.",
+                )
+            )
     if has_battery and coverage.get(BATTERY_SOC_PCT, 0.0) == 0.0:
         findings.append(
             HealthIssue(

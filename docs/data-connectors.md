@@ -174,6 +174,13 @@ with the least data and the longest gap, then lists every problem found:
 | `no_solar` | solar readings all zero | warn |
 | `no_grid_record` | weak-grid site with grid on/off for under half the hours | warn |
 | `no_battery_charge` | battery site with no charge readings | warn |
+| `grid_on_in_collapse` | a Nigerian grid site whose record shows the grid on at every reading of a day the national grid collapsed completely (NERC): the signal is probably the inverter's output, not the grid | warn |
+
+The collapse check uses the national grid collapses in
+`vaticore/sites/reference/nigeria_grid_events.csv` (from the Nigeria Energy
+Atlas, each with its source; total collapses only). A day counts only with at
+least 12 grid readings, and one reading off, however brief, clears it. Keep
+the list current from each NERC quarterly report.
 
 The timezone check is the one that saves the most pain. It finds the hour of
 peak solar from the data and compares it with when the sun is highest at the
