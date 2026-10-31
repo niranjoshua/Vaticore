@@ -31,6 +31,7 @@ import pandas as pd
 from pydantic import ValidationError
 
 from vaticore.sites.model import Site
+from vaticore.sites.nigeria import locate
 
 
 class Level(StrEnum):
@@ -145,6 +146,22 @@ def check_site(site: Site) -> list[Finding]:
             )
         if site.timezone != "Africa/Lagos":
             add(Level.WARN, f"timezone is {site.timezone}; Nigerian sites use Africa/Lagos.")
+        if lat_ok and lon_ok:
+            area = locate(site.latitude, site.longitude)
+            if area is None:
+                add(
+                    Level.WARN,
+                    f"position {site.latitude}, {site.longitude} is inside Nigeria's outline box "
+                    "but in no state (at sea, or over a border): check it.",
+                )
+            else:
+                add(Level.INFO, f"in {area.describe()}.")
+                if site.grid is not None and "/" in area.disco:
+                    add(
+                        Level.INFO,
+                        f"{area.state} has more than one DisCo ({area.disco}): confirm this "
+                        "site's with the operator and record it in tags (disco = ...).",
+                    )
 
     if site.value_of_lost_load_per_kwh <= 0:
         add(

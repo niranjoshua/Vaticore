@@ -510,6 +510,7 @@ def create_app() -> FastAPI:
             days=days,
             timezone=site.timezone if site else "UTC",
             longitude=site.longitude if site else None,
+            latitude=site.latitude if site else None,
             has_solar=site.solar is not None if site else True,
             has_grid=bool(site and site.grid and not site.grid.reliable),
             has_battery=site is not None,

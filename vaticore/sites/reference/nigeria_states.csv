@@ -1,0 +1,38 @@
+state,zone,disco,disco_name,regulator
+Abia,South East,EEDC,Enugu Electricity Distribution Co.,NERC
+Adamawa,North East,YEDC,Yola Electricity Distribution Co.,NERC
+Akwa Ibom,South South,PHED,Port Harcourt Electricity Distribution,Transfer ordered
+Anambra,South East,EEDC,Enugu Electricity Distribution Co.,NERC
+Bauchi,North East,JED,Jos Electricity Distribution,NERC
+Bayelsa,South South,PHED,Port Harcourt Electricity Distribution,Transfer ordered
+Benue,North Central,JED,Jos Electricity Distribution,NERC
+Borno,North East,YEDC,Yola Electricity Distribution Co.,NERC
+Cross River,South South,PHED,Port Harcourt Electricity Distribution,NERC
+Delta,South South,BEDC,Benin Electricity Distribution Co.,NERC
+Ebonyi,South East,EEDC,Enugu Electricity Distribution Co.,NERC
+Edo,South South,BEDC,Benin Electricity Distribution Co.,State (ESERC)
+Ekiti,South West,BEDC,Benin Electricity Distribution Co.,State
+Enugu,South East,EEDC,Enugu Electricity Distribution Co.,State (EERC)
+FCT,North Central,AEDC,Abuja Electricity Distribution Co.,NERC
+Gombe,North East,JED,Jos Electricity Distribution,NERC
+Imo,South East,EEDC,Enugu Electricity Distribution Co.,State
+Jigawa,North West,KEDCO,Kano Electricity Distribution Co.,NERC
+Kaduna,North West,KAEDCO,Kaduna Electric,NERC
+Kano,North West,KEDCO,Kano Electricity Distribution Co.,NERC
+Katsina,North West,KEDCO,Kano Electricity Distribution Co.,NERC
+Kebbi,North West,KAEDCO,Kaduna Electric,NERC
+Kogi,North Central,AEDC,Abuja Electricity Distribution Co.,State
+Kwara,North Central,IBEDC,Ibadan Electricity Distribution Co.,NERC
+Lagos,South West,EKEDC/IE,Eko & Ikeja Electric,State (LASERC)
+Nasarawa,North Central,AEDC,Abuja Electricity Distribution Co.,State
+Niger,North Central,AEDC,Abuja Electricity Distribution Co.,State
+Ogun,South West,IBEDC,Ibadan Electricity Distribution Co.,State
+Ondo,South West,BEDC,Benin Electricity Distribution Co.,State
+Osun,South West,IBEDC,Ibadan Electricity Distribution Co.,NERC
+Oyo,South West,IBEDC,Ibadan Electricity Distribution Co.,State
+Plateau,North Central,JED,Jos Electricity Distribution,State
+Rivers,South South,PHED,Port Harcourt Electricity Distribution,NERC
+Sokoto,North West,KAEDCO,Kaduna Electric,NERC
+Taraba,North East,YEDC,Yola Electricity Distribution Co.,NERC
+Yobe,North East,YEDC,Yola Electricity Distribution Co.,NERC
+Zamfara,North West,KAEDCO,Kaduna Electric,NERC

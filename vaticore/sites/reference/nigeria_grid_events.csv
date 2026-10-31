@@ -1,0 +1,22 @@
+date,type,notes,source_url
+2022-06-12,Collapse,Reported as the 5th collapse of 2022,https://www.ripplesnigeria.com/blackout-national-grid-collapses-again-5th-time-in-2022/
+2022-09-26,Collapse,Sudden frequency drop; reported as 7th of 2022,https://www.thisdaylive.com/2022/09/27/nigerias-erratic-power-grid-collapses-again-begins-recovery/
+2023-09-14,Total,Shortly after TCN announced 400 days without major disruption,https://www.zikoko.com/?p=319260
+2023-12-11,Collapse,Restored by 18:51,https://www.zikoko.com/?p=319260
+2024-02-04,Partial,NERC classification,https://nerc.gov.ng/wp-content/uploads/2024/07/2024_Q1-Report_v1YA.pdf
+2024-03-28,Total,NERC classification,https://nerc.gov.ng/wp-content/uploads/2024/07/2024_Q1-Report_v1YA.pdf
+2024-04-15,Collapse,Frequency imbalance,https://guardian.ng/news/timeline-the-12-times-national-grid-collapsed-in-2024/
+2024-07-06,Collapse,,https://guardian.ng/news/timeline-the-12-times-national-grid-collapsed-in-2024/
+2024-08-05,Collapse,,https://guardian.ng/news/timeline-the-12-times-national-grid-collapsed-in-2024/
+2024-10-14,Partial,NERC: partial; some media reported total,https://nerc.gov.ng/wp-content/uploads/2025/03/2024_Q4-Report.pdf
+2024-10-19,Total,TCN cited precaution after explosion at Jebba substation,https://nerc.gov.ng/wp-content/uploads/2025/03/2024_Q4-Report.pdf
+2024-10-22,Disturbance,17 northern states cut off after vandalism of transmission lines,https://guardian.ng/news/timeline-the-12-times-national-grid-collapsed-in-2024/
+2024-11-05,Partial,Line and generator trippings,https://nerc.gov.ng/wp-content/uploads/2025/03/2024_Q4-Report.pdf
+2024-11-07,Total,NERC classification,https://nerc.gov.ng/wp-content/uploads/2025/03/2024_Q4-Report.pdf
+2024-12-11,Total,NERC classification,https://nerc.gov.ng/wp-content/uploads/2025/03/2024_Q4-Report.pdf
+2025-02-12,Disputed,TCN called it a 'cascaded outage' (Omotosho–Ikeja West line trip),https://dubawa.org/is-it-true-nigeria-has-not-witnessed-national-grid-collapse-in-2025/
+2025-09-10,Total,"11:20, restored 11:48; GenCo trip and frequency imbalance",https://nerc.gov.ng/wp-content/uploads/2026/01/2025_Q3-Report.pdf
+2025-12-29,Partial,Circuit-breaker failure at Benin substation (NERC),https://nerc.gov.ng/wp-content/uploads/2026/04/2025_Q4-Report.pdf
+2026-01-23,Total,Busbar separation at Sapele substation,https://nerc.gov.ng/wp-content/uploads/2026/07/2026_Q1-Report.pdf
+2026-01-27,Partial,Reactive power shortfall / voltage disturbance (Gombe),https://nerc.gov.ng/wp-content/uploads/2026/07/2026_Q1-Report.pdf
+2026-08-22,Partial,"Generation fell to ~1,132 MW at 20:30; cause not explained",https://allafrica.com/stories/202608240731.html

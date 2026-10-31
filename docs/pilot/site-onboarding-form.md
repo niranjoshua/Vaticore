@@ -9,7 +9,11 @@ Every answer maps to one line of the site's `[[site]]` block in the
 portfolio file. After filling it in, run
 `uv run python -m vaticore.pipeline site check --portfolio portfolio.toml` before
 uploading the file. The check catches swapped coordinates, prices per drum,
-missing tank sizes and more.
+missing tank sizes and more. For a Nigerian site it also names the state, the
+state's DisCo and the electricity regulator from the site's position (no
+question needed), and warns if the position is in no state. In Lagos, which
+has more than one DisCo, ask which one supplies the site and record it as
+`tags = { disco = "IE" }`.
 
 ## The site
 
