@@ -24,10 +24,21 @@ check Meta's own documentation (developers.facebook.com/docs/whatsapp).
 1. Go to **business.facebook.com** and create a business portfolio for
    **Vaticore Ltd**.
 2. In **Business settings > Security centre**, start **Business
-   verification** and upload the company documents. This can take from a day
-   to a couple of weeks.
-3. You can build and test (steps 2 to 4) while verification is pending.
-   Until it completes, Meta limits how many people you can message.
+   verification**. If it says your organisation "does not need to be
+   verified", create the app first (step 2): Meta offers verification once
+   the portfolio has an app or WhatsApp account, and the **Start
+   verification** button then appears there and on the app's
+   **Verification** page.
+3. Choose **Private company** as the business type, and enter the legal
+   name, registered office and company number exactly as on Companies House.
+   Meta may match the company in the register itself and then ask only for
+   a photo of the admin's ID (at least 1500 x 1000 pixels; take it with the
+   phone camera and copy it without compression). Otherwise upload the
+   certificate of incorporation and a document showing the address. Review
+   takes from a day to a couple of weeks.
+4. You can build and test (steps 2 to 4) while verification is pending.
+   Until it completes, Meta limits how many people you can message. Do not
+   buy **Meta Verified**: it is a paid badge, not business verification.
 
 ## 2. The app and a test number
 
