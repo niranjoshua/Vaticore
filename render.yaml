@@ -153,7 +153,7 @@ services:
         sync: false
       - key: VATICORE_WHATSAPP_PHONE_NUMBER_ID
         sync: false
-      # Once the Pidgin template is approved: pcm=vaticore_daily_plan_pcm:en
+      # Once the Pidgin template is approved: pcm=vaticore_daily_plan_pcm:en_GB
       - key: VATICORE_WHATSAPP_EXTRA_TEMPLATES
         sync: false
       - key: VATICORE_VRM_TOKEN

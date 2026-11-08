@@ -209,7 +209,7 @@ class WhatsAppChannel:
         phone_number_id: str,
         api_version: str = "v23.0",
         template_name: str = "vaticore_daily_plan",
-        template_language: str = "en",
+        template_language: str = "en_GB",
         templates: dict[str, tuple[str, str]] | None = None,
         mode: str = "template",
         max_attempts: int = 3,

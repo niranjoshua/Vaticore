@@ -197,7 +197,7 @@ def test_a_plan_goes_out_as_the_approved_template() -> None:
     body = json.loads(request.content)
     assert body["to"] == "2348000000001" and body["messaging_product"] == "whatsapp"
     template = body["template"]
-    assert template["name"] == "vaticore_daily_plan" and template["language"] == {"code": "en"}
+    assert template["name"] == "vaticore_daily_plan" and template["language"] == {"code": "en_GB"}
     params = template["components"][0]["parameters"]
     assert [p["text"] for p in params] == _message().params
 

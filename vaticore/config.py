@@ -65,7 +65,7 @@ class Settings(BaseSettings):
     whatsapp_phone_number_id: str | None = Field(default=None)
     whatsapp_api_version: str = Field(default="v23.0")
     whatsapp_template_name: str = Field(default="vaticore_daily_plan")
-    whatsapp_template_language: str = Field(default="en")
+    whatsapp_template_language: str = Field(default="en_GB")
     whatsapp_summary_template: str = Field(default="vaticore_weekly_summary")
     # Approved templates for other plan languages, "lang=template:code,...", e.g.
     # "pcm=vaticore_daily_plan_pcm:en" once the Pidgin template is approved.
