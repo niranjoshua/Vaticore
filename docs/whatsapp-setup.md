@@ -56,7 +56,9 @@ Vaticore uses one template for every plan.
 
 1. Open **WhatsApp Manager > Message templates > Create template**.
 2. **Category: Utility** (plans are operational messages, not marketing).
-3. **Name:** `vaticore_daily_plan`. **Language:** English.
+3. **Name:** `vaticore_daily_plan`. **Language:** English (UK), code
+   `en_GB`, which is what Vaticore sends by default. Meta matches the
+   template by name and language code, so they must agree.
 4. **Body:** paste exactly:
 
    ```text
@@ -97,7 +99,7 @@ template; submit it at the same time as the daily plan, since approval is the
 step that takes longest.
 
 1. **Category: Utility.** **Name:** `vaticore_weekly_summary`. **Language:**
-   English.
+   English (UK).
 2. **Body:** paste exactly:
 
    ```text
@@ -126,7 +128,7 @@ step that takes longest.
 People with `language = "pcm"` in the recipients file get their plans in
 Nigerian Pidgin once this template is approved; until then they get English.
 Meta's template languages do not include Pidgin, so it is submitted under
-**English** with its own name.
+**English (UK)** with its own name.
 
 Before submitting: have a native speaker read the wording, and test it with
 two or three technicians. Change it in
@@ -134,7 +136,7 @@ two or three technicians. Change it in
 table) if they suggest better words, then submit exactly what is there.
 
 1. **Category: Utility.** **Name:** `vaticore_daily_plan_pcm`. **Language:**
-   English.
+   English (UK).
 2. **Body:**
 
    ```text
@@ -158,7 +160,7 @@ table) if they suggest better words, then submit exactly what is there.
    (`vaticore-daily-plans`, `vaticore-safety-net`):
 
    ```text
-   VATICORE_WHATSAPP_EXTRA_TEMPLATES=pcm=vaticore_daily_plan_pcm:en
+   VATICORE_WHATSAPP_EXTRA_TEMPLATES=pcm=vaticore_daily_plan_pcm:en_GB
    ```
 
    The "why not?" question and its thanks go to Pidgin speakers in Pidgin
@@ -166,7 +168,7 @@ table) if they suggest better words, then submit exactly what is there.
 
 Hausa (`ha`) is a Meta template language, so a Hausa version can be submitted
 under Hausa once a translator provides the phrase table; Yoruba and Igbo, like
-Pidgin, would go under English.
+Pidgin, would go under English (UK).
 
 ## 4. A permanent token
 
@@ -189,6 +191,10 @@ The 24-hour token is for testing. For the daily job:
    reviews the display name.
 2. Verify it by SMS or call.
 3. Replace `VATICORE_WHATSAPP_PHONE_NUMBER_ID` with the new number's ID.
+4. Templates belong to one WhatsApp Business account. If the real number
+   sits in a different account from the test number (WhatsApp Manager's
+   account menu shows which), submit the templates again there, with the
+   same names, language and validity period.
 
 ## 6. Webhooks: receipts, replies and STOP
 
