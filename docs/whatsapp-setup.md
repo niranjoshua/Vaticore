@@ -75,9 +75,15 @@ Vaticore uses one template for every plan.
    4. `counted on 06:00 to 14:00; run the generator if it fails.`
    5. `starts about 60%, ends about 41%.`
    6. `Data OK.`
-6. Submit. Approval usually takes minutes to a few hours. If Meta rejects it,
+6. **Message validity period:** switch on the custom validity period and set
+   the longest Meta offers (usually 12 hours). The default is 10 minutes:
+   a plan sent at 18:00 to a phone that is off, flat or without data during
+   an outage would be dropped and never arrive. With 12 hours it arrives
+   when the phone comes back, still before the morning. Undelivered
+   messages are not charged either way. Set the same on every template.
+7. Submit. Approval usually takes minutes to a few hours. If Meta rejects it,
    the reason is shown; the usual fix is a small wording change.
-7. If you choose a different name or language code, set
+8. If you choose a different name or language code, set
    `VATICORE_WHATSAPP_TEMPLATE_NAME` and `VATICORE_WHATSAPP_TEMPLATE_LANGUAGE`.
 
 The template's wording lives in `vaticore/delivery/message.py`
@@ -111,7 +117,8 @@ step that takes longest.
    4. `no diesel 3, generator fault 1.`
    5. `1 check at Ikorodu tower, 28 L (NGN 35,000).`
    6. `readings complete at every site.`
-4. If you choose another name, set `VATICORE_WHATSAPP_SUMMARY_TEMPLATE`. The
+4. Custom validity period: 12 hours, as for the daily plan.
+5. If you choose another name, set `VATICORE_WHATSAPP_SUMMARY_TEMPLATE`. The
    wording lives in `vaticore/pipeline/summary.py` (`SUMMARY_BODY`).
 
 ### The Pidgin template
@@ -146,7 +153,8 @@ table) if they suggest better words, then submit exactly what is there.
    4. `we dey expect am 06:00 to 14:00; if e no come, on the generator.`
    5. `e go start around 60%, end around 41%.`
    6. `Data dey OK.`
-4. Once it is **Active**, set on every service that sends plans
+4. Custom validity period: 12 hours, as for the daily plan.
+5. Once it is **Active**, set on every service that sends plans
    (`vaticore-daily-plans`, `vaticore-safety-net`):
 
    ```text
